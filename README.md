@@ -11,7 +11,7 @@ git clone https://github.com/ShacMiester/wocat-harvester
 1. Adding it to your dependencies.
 Specifying dependencies and devDependencies in a package.json file
 ```
-"wocat-wocat-harvestor": "file: {your filePath} ",
+"wocat-wocat-harvestor": "file: {Package file path} ",
 ```
 Or you can just install it directly
 ```
