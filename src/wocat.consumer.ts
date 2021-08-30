@@ -11,7 +11,7 @@ import { ElasticsearchService } from '@nestjs/elasticsearch';
 
 @Processor('fetch')
 export class WocatConsumer {
-  apikey: string = '2176c299d31d4f9edfa2540ce7164221858394b8';
+  apikey: string 
   private logger = new Logger(WocatConsumer.name);
   constructor(
     private http: HttpService,
@@ -20,6 +20,7 @@ export class WocatConsumer {
 
   @Process({ name: 'wocat', concurrency: 1 })
   async fetch(job: Job, done: DoneCallback) {
+    this.apikey = job.data.repo.apiKey
     let url = '';
 
     job.progress(20);
