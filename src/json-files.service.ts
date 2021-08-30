@@ -10,11 +10,11 @@ export class JsonFilesService {
     let files = await readdirSync(join(__dirname, '../../../data/templates'));
     for (let file of files)
       if (
-        !(await existsSync(join(__dirname, '../../../data/' + file.substr(8))))
+        !(await existsSync(join(__dirname, '../../../data/' + file.substr(6))))
       )
         await copyFileSync(
           join(__dirname, '../../../data/templates/' + file),
-          join(__dirname, '../../../data/' + file.substr(8)),
+          join(__dirname, '../../../data/' + file.substr(6)),
         );
 
     if (await existsSync(join(__dirname, '../../../data/files/images')))
@@ -41,12 +41,15 @@ export class JsonFilesService {
     });
   }
 
-  async save(obj:any, name:string) {
+  async save(obj: any, name: string) {
     jsonfile.writeFileSync(join(__dirname, name), obj);
     return { success: true };
   }
 
-  async read(name:string) {
+  async read(name: string) {
     return jsonfile.readFileSync(join(__dirname, name));
+  }
+  async metaData(name: string) {
+    return jsonfile.readFile(join(__dirname, `../data/${name}.json`));
   }
 }

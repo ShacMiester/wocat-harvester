@@ -3,6 +3,7 @@ import { HttpModule, Module } from '@nestjs/common';
 import { ElasticsearchModule } from '@nestjs/elasticsearch';
 import { JsonFilesService } from './json-files.service';
 import { WocatConsumer } from './wocat.consumer';
+import { WocatController } from './wocat.controller';
 console.log('module ');
 @Module({
   providers: [WocatConsumer, JsonFilesService],
@@ -13,7 +14,7 @@ console.log('module ');
       node: process.env.ELASTICSEARCH_HOST,
     }),
   ],
-  controllers: [],
+  controllers: [WocatController],
 })
 export class WocatHarvestModule {
   constructor(private jsonService: JsonFilesService) {
