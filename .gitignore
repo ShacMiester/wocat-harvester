@@ -32,8 +32,8 @@ lerna-debug.log*
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-!/data
-/data/*
+# !/data
+# /data/*
 !/data/templates
 /data/files/
 
