@@ -227,6 +227,7 @@ export class WocatConsumer {
       finalObjT['Degradation type'] = finalObjT['Degradation type'].map(
         (element: any) => element[0],
       );
+      console.log(finalObjT['thumbnail'])
 
     return finalObjT;
   }
