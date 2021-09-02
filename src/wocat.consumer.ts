@@ -121,7 +121,12 @@ export class WocatConsumer {
           });
         }
       }
-
+      if(obj.hasOwnProperty('image'))
+      if(obj.image.hasOwnProperty('value'))
+      if(Array.isArray(obj.image.value))
+      {
+      finalObjT['thumbnail'] = 'https://qcat.wocat.net' + obj.image.value[0].value
+      }
       if (
         key == 'value' &&
         val &&
