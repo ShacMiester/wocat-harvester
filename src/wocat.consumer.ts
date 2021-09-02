@@ -11,7 +11,7 @@ import { ElasticsearchService } from '@nestjs/elasticsearch';
 
 @Processor('fetch')
 export class WocatConsumer {
-  apikey: string 
+  apikey: string;
   private logger = new Logger(WocatConsumer.name);
   constructor(
     private http: HttpService,
@@ -20,7 +20,7 @@ export class WocatConsumer {
 
   @Process({ name: 'wocat', concurrency: 1 })
   async fetch(job: Job, done: DoneCallback) {
-    this.apikey = job.data.repo.apiKey
+    this.apikey = job.data.repo.apiKey;
     let url = '';
 
     job.progress(20);
@@ -34,9 +34,9 @@ export class WocatConsumer {
         if (result?.status == 200) {
           if (result.data.next != '') {
             job.data.repo.itemsEndPoint = result.data.next;
-            job.data.repo.startPage +=1;
+            job.data.repo.startPage += 1;
             job.queue.add('wocat', {
-              repo: job.data.repo
+              repo: job.data.repo,
             });
             done(null, result.data.next);
           } else done();
@@ -121,12 +121,12 @@ export class WocatConsumer {
           });
         }
       }
-      if(obj.hasOwnProperty('image'))
-      if(obj.image.hasOwnProperty('value'))
-      if(Array.isArray(obj.image.value))
-      {
-      finalObjT['thumbnail'] = 'https://qcat.wocat.net' + obj.image.value[0].value
-      }
+      if (obj.hasOwnProperty('image'))
+        if (obj.image.hasOwnProperty('value'))
+          if (Array.isArray(obj.image.value)) {
+            finalObjT['thumbnail'] =
+              'https://qcat.wocat.net' + obj.image.value[0].value;
+          }
       if (
         key == 'value' &&
         val &&
@@ -215,7 +215,9 @@ export class WocatConsumer {
       finalObjT['Land use type'] = finalObjT['Land use type'].map(
         (element: any) => element[0],
       );
-    finalObjT['thumbnail'] = Array.isArray(jsonData['Image'])? 'https://qcat.wocat.net'+jsonData.Image[0] : 'https://qcat.wocat.net'+jsonData.Image 
+    finalObjT['thumbnail'] = Array.isArray(jsonData['Image'])
+      ? 'https://qcat.wocat.net' + jsonData.Image[0]
+      : 'https://qcat.wocat.net' + jsonData.Image;
     if (finalObjT['SLM measures'])
       finalObjT['SLM measures'] = finalObjT['SLM measures'].map(
         (element: any) => element[0],
