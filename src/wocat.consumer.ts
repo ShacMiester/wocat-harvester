@@ -215,9 +215,6 @@ export class WocatConsumer {
       finalObjT['Land use type'] = finalObjT['Land use type'].map(
         (element: any) => element[0],
       );
-    finalObjT['thumbnail'] = Array.isArray(jsonData['Image'])
-      ? 'https://qcat.wocat.net' + jsonData.Image[0]
-      : 'https://qcat.wocat.net' + jsonData.Image;
     if (finalObjT['SLM measures'])
       finalObjT['SLM measures'] = finalObjT['SLM measures'].map(
         (element: any) => element[0],
@@ -227,7 +224,6 @@ export class WocatConsumer {
       finalObjT['Degradation type'] = finalObjT['Degradation type'].map(
         (element: any) => element[0],
       );
-      console.log(finalObjT['thumbnail'])
 
     return finalObjT;
   }
