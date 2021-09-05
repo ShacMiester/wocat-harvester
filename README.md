@@ -1,6 +1,6 @@
 # WOCAT Harvester
 
-This package is concerned with fetching/harvesting **WOCAT** data for the [WOCAT Dashboard](https://explorer.wocat.net/).
+This package is concerned with fetching/harvesting **WOCAT** data for the [OpenRXV Dashboard](https://cgspace.cgiar.org/explorer/).
 
 # Usage
 
